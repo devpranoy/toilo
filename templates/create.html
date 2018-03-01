@@ -94,7 +94,7 @@
         <div class="bqn">
   <div class="bqo">
     
-    <h2 class="bqp">My Spaces</h2>
+    <h2 class="bqp"><a href="create">My Spaces</a></h2>
   </div>
 </div>
 
@@ -119,6 +119,10 @@
                 <label >Enter Contact Number</label>
                 <input type="text" class="form-control" placeholder="Contact Number" name="number" value={{request.form.number}}>
               </div>
+              <div class="form-group">
+                  <label >Enter the address</label>
+                  <input type="text" class="form-control" placeholder="Address" name="address" value={{request.form.address}}>
+                </div>
               <br>
           <button style="border-radius:5px; text-align:center; background-color:#6958ca;color:#fff;margin-left:150px;font-weight:300;font-size:1.5em;" type="submit" class="btn btn-primary">Submit</button>
         </form>

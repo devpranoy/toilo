@@ -22,7 +22,8 @@ def create():
 		cost = request.form['cost']
 		timing = request.form['timing']
 		contact = request.form['number']
-		sql="INSERT INTO TOILETS(LOCATION,COST,TIMING,CONTACTNO,USERID) VALUES('%s','%s' ,'%s','%s','%s')"%(location,cost,timing,contact,session['userid'])
+		address = request.form['address']
+		sql="INSERT INTO TOILETS(LOCATION,COST,TIMING,CONTACTNO,USERID,ADDRESS) VALUES('%s','%s' ,'%s','%s','%s','%s')"%(location,cost,timing,contact,session['userid'],address)
 		dbquery.inserttodb(sql)	#connecting to db model
 		
 		return redirect( url_for('dashboard')) #redirecting to login page
@@ -84,7 +85,7 @@ def logout():
 	session.clear()								#Session is destroyed
 	flash('You are now logged out','success')
 	return redirect(url_for('index'))
-	
+
 @app.route('/signup', methods=['GET','POST'])
 def signup():
 	if request.method == 'POST':
