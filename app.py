@@ -15,11 +15,29 @@ def is_logged_in(f):	# Function for implementing security and redirection
 			return redirect(url_for('login'))
 	return wrap	# A wrap is a concept that is used to check for authorisation of a request
 
+@app.route('/create', methods=['GET','POST'])
+def create():
+	if request.method=='POST':
+		location= request.form['location']
+		cost = request.form['cost']
+		timing = request.form['timing']
+		contact = request.form['number']
+		sql="INSERT INTO TOILETS(LOCATION,COST,TIMING,CONTACTNO,USERID) VALUES('%s','%s' ,'%s','%s','%s')"%(location,cost,timing,contact,session['userid'])
+		dbquery.inserttodb(sql)	#connecting to db model
+		
+		return redirect( url_for('dashboard')) #redirecting to login page
+	
+	return render_template('create.html')
+
+
 
 @app.route('/dashboard',methods=['GET','POST'])
 @is_logged_in	
 def dashboard():
-	return render_template('dashboard.html')
+	sql="SELECT * FROM TOILETS WHERE USERID = '%s'"%(session['userid'])
+	people=dbquery.fetchall(sql)
+	return render_template('dashboard.html',people=people)
+
 
 @app.route('/login', methods=['GET','POST']) #login page
 def login():
@@ -61,7 +79,12 @@ def login():
 				return render_template('login.html',error=error)
 		return redirect(url_for('dashboard'))#if verification is successful load the dashboard with session
 	return render_template('login.html')
-
+@app.route('/logout')
+def logout():
+	session.clear()								#Session is destroyed
+	flash('You are now logged out','success')
+	return redirect(url_for('index'))
+	
 @app.route('/signup', methods=['GET','POST'])
 def signup():
 	if request.method == 'POST':

@@ -14,9 +14,10 @@
 
     <title>
       
-        Toilo &middot; Dashboard
+        Toilo &middot; Dashboard &middot; Create
       
     </title>
+    <link rel="icon" href="favicon.png" type="image/x-icon">
 
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic" rel="stylesheet">
     
@@ -74,12 +75,12 @@
               </button>
             </form>
             <ul class="nav pb nav-stacked wz">
-          
+              
               <li class="pa">
-                <a class="oy active" href="index">Overview</a>
+                <a class="oy" href="dashboard">Overview</a>
               </li>
               <li class="pa">
-                <a class="oy" href="create">Create</a>
+                <a class="oy active" href="#">Create</a>
               </li>
               <li class="pa">
                 <a class="oy" href="logout">Logout</a>
@@ -92,7 +93,7 @@
       <div class="et brf">
         <div class="bqn">
   <div class="bqo">
-  
+    
     <h2 class="bqp">My Spaces</h2>
   </div>
 </div>
@@ -101,22 +102,26 @@
 
 <div class="dh">
   <div class="eq afr">
-    <div class="by afd">
-      <h6 class="aya">
-        Places
-      </h6>
-      {% for person in people %}
-      <a class="pu rs xj ux" href="#">
-    <span>{{person[1]}}</span>
-    </a>
-{% endfor %} 
-       
-         
-        
-      
-      
-      
-    </div>
+      <form class="form-control" method="POST">
+          <div class="form-group">
+            <label >Enter Location</label>
+            <input type="text" class="form-control"  placeholder="Location" name="location" value={{request.form.location}}>
+          </div>
+          <div class="form-group">
+            <label>Enter cost</label>
+            <input type="text" class="form-control" placeholder="Cost" name="cost" value={{request.form.cost}} >
+          </div>
+          <div class="form-group">
+              <label >Enter Timing</label>
+              <input type="text" class="form-control" placeholder="Timing" name="timing" value={{request.form.timing}}>
+            </div>
+            <div class="form-group">
+                <label >Enter Contact Number</label>
+                <input type="text" class="form-control" placeholder="Contact Number" name="number" value={{request.form.number}}>
+              </div>
+              <br>
+          <button style="border-radius:5px; text-align:center; background-color:#6958ca;color:#fff;margin-left:150px;font-weight:300;font-size:1.5em;" type="submit" class="btn btn-primary">Submit</button>
+        </form>
   </div>
       </div>
     </div>
