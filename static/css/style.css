@@ -1,0 +1,23 @@
+
+#content {
+    margin-left: 19%;
+    width: 81%;
+    margin-top: 3em;
+    padding-left: 3em;
+    float: left;
+}
+#side{
+    margin-top: 53.03px !important;
+    background-color:#1b1c1d;
+    
+}
+#sidebar .ui.menu > a.item.active{
+    background-color: #337ab7;
+    color: white;
+    border: none !important;
+}
+#sidebar .ui.menu > a.item{
+    background-color: #337ab7;
+    color: white;
+    border: none !important;
+}
