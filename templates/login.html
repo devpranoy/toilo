@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Basic meta -->
+  <meta charset="UTF-8">
+  
+  <title>Toilo | Login</title>
+  <meta name="viewport" content="user-scalable=no,width=device-width,height=device-height,initial-scale=1,maximum-scale=1" />
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="../static/assets/img/favicon.png" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css?family=Work+Sans:200,300,400,500,600,700" rel="stylesheet">
+
+  <link rel="stylesheet" href="../static/assets/css/login.css" />
+
+  <link rel="chrome-webstore-item" id="chrome-webstore-item-url" href="https://chrome.google.com/webstore/detail/dipeehgoehnglgojdgfmndjemdfepkeb">
+  <script type="text/javascript" src="../static/assets/js/jqueryb8ff.js"></script>
+
+</head>
+<body>
+  <div class="global u-va" id="layout-login">
+    <div class="login__header">
+  <a href="/login">
+    <img src="../static/assets/img/logo-m.png" height="33" width="200">
+  </a>
+</div>
+<form action="" method="post" class="login form">
+  <div class="form-rows login__form">
+    <div class="form-row">
+      <div class="input-container ">
+        <label htmlfor="email" class="form-label ff-m">Email</label>
+        <input
+          type="email"
+          name="email"
+          class="form-input"
+          placeholder="arun@toilo.com"
+          
+          required
+          autofocus
+          value="{{request.form.email}}"
+        />
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="input-container">
+        <label htmlfor="password" class="form-label ff-m">Password</label>
+        <input
+          type="password"
+          name="password"
+          class="form-input"
+          placeholder="********"
+          required
+          value="{{request.form.password}}"
+        >
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-primary u-fw" type="submit" class="c-btn u-fr">Sign in</button>
+</form>
+  </div>
+</body>
+</html>
