@@ -19,7 +19,7 @@ def is_logged_in(f):	# Function for implementing security and redirection
 def search():
 	if request.method=='POST':
 		location=request.form['location']
-		sql="select cost,contactno,address,timing,location from toilets where location='%s';"%(location)
+		sql="SELECT COST,CONTACTNO,ADDRESS,TIMING,LOCATION FROM TOILETS WHERE LOCATION='%s';"%(location)
 		info=dbquery.fetchall(sql)
 		return render_template('search.html',info=info)
 	return render_template("search.html")
