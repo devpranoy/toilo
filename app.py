@@ -22,7 +22,7 @@ def search():
 		sql="SELECT COST,CONTACTNO,ADDRESS,TIMING,LOCATION FROM TOILETS WHERE LOCATION='%s';"%(location)
 		info=dbquery.fetchall(sql)
 		return render_template('search.html',info=info)
-	return render_template("search.html")
+	return render_template('search.html')
 
 
 @app.route('/create', methods=['GET','POST'])
