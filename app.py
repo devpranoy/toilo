@@ -15,7 +15,18 @@ def is_logged_in(f):	# Function for implementing security and redirection
 			return redirect(url_for('login'))
 	return wrap	# A wrap is a concept that is used to check for authorisation of a request
 
+@app.route('/search', methods=['GET','POST'])
+def search():
+	if request.method=='POST':
+		location=request.form['location']
+		sql="select cost,contactno,address,timing,location from toilets where location='%s';"%(location)
+		info=dbquery.fetchall(sql)
+		return render_template('search.html',info=info)
+	return render_template("search.html")
+
+
 @app.route('/create', methods=['GET','POST'])
+@is_logged_in
 def create():
 	if request.method=='POST':
 		location= request.form['location']
@@ -112,4 +123,4 @@ def index():
 
 if __name__=='__main__':
 	app.secret_key='secret123' #for flash messaging
-	app.run(host='0.0.0.0',port =80,debug=True) #Debugger is set to 1 for testing and overriding the default port to http port
+	app.run(host='0.0.0.0',port =80,threaded=True) #Debugger is set to 1 for testing and overriding the default port to http port

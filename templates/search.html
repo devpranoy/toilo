@@ -11,14 +11,13 @@
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../static/assets/favicon.png" type="image/x-icon">
 
     <title>
       
-        Toilo &middot; Dashboard &middot; Create
+        Toilo &middot; Results
       
     </title>
-    
+    <link rel="icon" href="favicon.png" type="image/x-icon">
 
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic" rel="stylesheet">
     
@@ -50,6 +49,13 @@
         background-color: transparent;
         -webkit-text-decoration-skip: objects;
       }
+      .headerSortUp, .headerSortDown {
+        white-space: nowrap;
+        cursor: pointer;
+        font-weight: 700 !important;
+        color: #6958ca !important;
+        border-bottom-color: #6958ca !important;
+      }
     </style>
   </head>
 
@@ -63,25 +69,25 @@
             <button class="bow boy bqb" type="button" data-toggle="collapse" data-target="#nav-toggleable-md">
               <span class="adp">Toggle nav</span>
             </button>
-            <a class="bqc brd" href="">
+            <a class="bqc brd" href="/">
               <span><img src="../static/dashboard/images/logo.png" height="46px" width="153px"/></span>
             </a>
           </div>
 
           <div class="collapse bpd" id="nav-toggleable-md">
-            <form class="bqe">
-              <input class="form-control" type="text" placeholder="Search...">
+            <form class="bqe" action="/search" method="POST">
+              <input class="form-control" type="text" placeholder="Search..." name="location" value={{request.form.location}}>
               <button type="submit" class="nz">
                 <span class="bv bhw"></span>
               </button>
             </form>
             <ul class="nav pb nav-stacked wz">
-              
+            
               <li class="pa">
-                <a class="oy" href="dashboard">Overview</a>
+                <a class="oy active" href="dashboard">Overview</a>
               </li>
               <li class="pa">
-                <a class="oy active" href="#">Create</a>
+                <a class="oy" href="create">Create</a>
               </li>
               <li class="pa">
                 <a class="oy" href="logout">Logout</a>
@@ -95,43 +101,42 @@
         <div class="bqn">
   <div class="bqo">
     
-    <h2 class="bqp"><a href="create">My Spaces</a></h2>
+    <h2 class="bqp">Available Spaces</h2>
   </div>
 </div>
 
-<hr class="aez">
 
-<div class="dh">
-  <div class="eq afr">
-      <form class="form-control" method="POST">
-          <div class="form-group">
-            <label >Enter Location</label>
-            <input type="text" class="form-control"  placeholder="Location" name="location" value={{request.form.location}}>
-          </div>
-          <div class="form-group">
-            <label>Enter cost</label>
-            <input type="text" class="form-control" placeholder="Cost" name="cost" value={{request.form.cost}} >
-          </div>
-          <div class="form-group">
-              <label >Enter Timing</label>
-              <input type="text" class="form-control" placeholder="Timing" name="timing" value={{request.form.timing}}>
-            </div>
-            <div class="form-group">
-                <label >Enter Contact Number</label>
-                <input type="text" class="form-control" placeholder="Contact Number" name="number" value={{request.form.number}}>
-              </div>
-              <div class="form-group">
-                  <label >Enter the address</label>
-                  <input type="text" class="form-control" placeholder="Address" name="address" value={{request.form.address}}>
-                </div>
-              <br>
-          <button style="border-radius:5px; text-align:center; background-color:#6958ca;color:#fff;margin-left:150px;font-weight:300;font-size:1.5em;" type="submit" class="btn btn-primary">Submit</button>
-        </form>
-  </div>
+<div class="ly">
+  <table class="ck" data-sort="table">
+    <thead>
+      <tr>
+        <th>Price</th>
+        <th>Contact Number</th>
+        <th>Address</th>
+        <th>Availability</th>
+        <th>Location</th>
+      </tr>
+    </thead>
+    <tbody>
+    
+          {% for infos in info %}
+           <tr>
+         
+        <td>{{infos[0]}}</td>
+        <td>{{infos[1]}}</td>
+        <td>{{infos[2]}}</td>
+        <td>{{infos[3]}}</td>
+        <td>{{infos[4]}}</td>
+      </tr>
+      {% endfor %} 
+    
+    </tbody>
+  </table>
+</div>
+
       </div>
     </div>
   </div>
-
 
     <script src="https://bootstrap-themes.github.io/dashboard/assets/js/jquery.min.js"></script>
     <script src="https://bootstrap-themes.github.io/dashboard/assets/js/popper.min.js"></script>

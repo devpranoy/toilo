@@ -9,6 +9,7 @@
 <link rel="stylesheet" type="text/css" href="../static/index/assets/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="../static/index/assets/css/slick.css">
 <link rel="stylesheet" type="text/css" href="../static/index/assets/css/style.css">
+<link rel="icon" href="../static/assets/favicon.png" type="image/x-icon">
 </head>
 
 <body>
@@ -26,7 +27,7 @@
                                    Login
                                    
                             </button></a>
-                            <a href="index.html">
+                            <a href="/">
                                 <img class="logo" src="../static/index/assets/images/logo.png" alt="Spacehost">
                             </a>
                         </div>
@@ -45,10 +46,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="big-title">Toilets on the go<br>Find your space with toilo.</div>
+                    <div class="big-title">Toilets on the go<br>Find your space with toilo</div>
                     <div class="domain-search-holder">
-                        <form id="domain-search">
-                            <input id="domain-text" type="text" name="domain" placeholder="Enter your location.." />
+                        <form id="domain-search" action="/search" method="POST">
+                            <input id="domain-text" type="text" name="location" placeholder="Enter your location.." value={{request.form.location}} >
                             <span class="inline-button">
                                 <input id="search-btn" type="submit" name="submit" value="Search" />
                             </span>
